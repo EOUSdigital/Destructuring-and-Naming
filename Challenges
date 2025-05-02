@@ -1,0 +1,86 @@
+//  🧪 Challenge/Project: Config-Driven Feature Manager
+
+//* 🎯 Goal:
+//  Simulate a scenario where we are consuming a user configuration object (like from an API or a settings file) and applying destructuring with:
+//  • ✅ Renaming
+//  • ✅ Default values
+//  • ✅ Nested access
+//  • ✅ Clean, self-documenting variables
+
+//* 📦 Scenario:
+//  You’re building a loadUserSettings() function that reads a configuration object and prepares settings for your app’s UI and permissions system.
+
+//  You receive this object:
+
+const userSettings = {
+    user_id: 1201,
+    profile: {
+        full_name: 'Alice Jones',
+        theme: 'dark',
+        preferences: {
+        notifications: true
+        }
+    },
+    roles: ['editor', 'contributor'],
+    is_admin: false
+};
+
+//*  🧠 Tasks:
+
+//*  ✅ Step 1: Destructure and rename the following:
+//  • user_id ➜ userId
+//  • full_name ➜ name
+//  • theme ➜ uiTheme
+//  • notifications ➜ hasNotifications
+//  • is_admin ➜ isAdmin
+
+//* ✅ Step 2: Use default values:
+//  • If preferences.notifications is missing ➜ default to false.
+//  • If theme is missing ➜ default to 'light'.
+
+//* ✅ Step 3: Log a message:
+//  User Alice Jones (ID: 1201) has chosen the dark theme.
+//  Notifications enabled: true
+//  Admin access: false
+
+//* 💡 Optional Bonus:
+//  Create a getUserSettingsSummary(settings) function that accepts the userSettings object and returns a string summary using destructuring internally.
+
+//! Solution
+
+//* Step 1.
+//* Step 2.
+
+const {
+    user_id: userId11,
+    is_admin: isAdmin11,
+    profile: {
+        full_name: name11,
+        theme: uiTheme11 = 'light',
+        preferences: {
+        notifications: hasNotifications11 = false
+        } = {}
+    } = {}
+} = userSettings;
+
+//* step 3.
+
+console.log(`User ${name11} (ID: ${userId11}) has chosen the ${uiTheme11} theme.`);
+console.log(`Notifications enabled: ${hasNotifications11}`);
+console.log(`Admin access: ${isAdmin11}`);
+
+//* Bonus
+
+function getUserSettingsSummary({
+    user_id,
+    profile: {
+        full_name,
+        theme = 'light',
+        preference: { notifications = false } = {},
+    },
+    is_admin,
+}) {
+    return `User ${name11} (ID: ${userId11}) has chosen the ${uiTheme11} theme.\n` + `Notifications enabled: ${hasNotifications11}` + `Admin access: ${isAdmin11}`;
+};
+
+console.log(getUserSettingsSummary(userSettings));
