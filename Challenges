@@ -84,3 +84,120 @@ function getUserSettingsSummary({
 };
 
 console.log(getUserSettingsSummary(userSettings));
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+//  🧪 Challenge: Order Receipt Processor
+
+//* 📦 Scenario:
+//  A team is working on an eCommerce system that processes orders. Each order contains customer info, product info, and optional metadata.
+
+//* 🧾 Sample Order Object:
+
+const order = {
+    order_id: 'ORD-9098',
+    customer: {
+        full_name: 'Jordan Smith',
+        email: 'jordan@example.com',
+    },
+    product: {
+        name: 'Noise-Cancelling Headphones',
+        price: 129.99,
+    },
+    metadata: {
+        coupon: 'WELCOME10',
+        gift: true,
+    },
+};
+
+//* 🎯 Task:
+//? ✅ Step 1: Destructure and rename the following:
+//  • order_id ➜ orderId
+//  • full_name ➜ customerName
+//  • email ➜ customerEmail
+//  • name (product name) ➜ productName
+//  • price ➜ productPrice
+//  • coupon ➜ discountCode
+//  • gift ➜ isGift
+
+//? ✅ Step 2: Apply defaults if missing:
+//  • coupon ➜ default to 'NO_CODE'
+//  • gift ➜ default to false
+
+//? ✅ Step 3: Display this formatted message:
+//  Order #ORD-9098
+//  Customer: Jordan Smith (jordan@example.com)
+//  Item: Noise-Canceling Headphones - $129.99
+//  Gift: true
+//  Discount Code: WELCOME10
+
+//? 🔧 Bonus:
+//  Wrap this into a function called printOrderSummary(order)
+//  • ✅ Accepts an order object.
+//  • ✅ Uses destructuring internally.
+//  • ✅ Returns or logs the full formatted summary.
+
+//! Solution
+
+//* Step 1.
+//* Step 2.
+
+const {
+    order_id: orderId,
+    customer: {
+        full_name: customerName,
+        email: customerEmail,
+    } = {},
+    product: {
+        name: productName,
+        price: productPrice,
+    } = {},
+    metadata: {
+        coupon: discountCode = 'NO_CODE',
+        gift: isGift = false,
+    } = {},
+} = order;
+
+//* Step 3.
+
+console.log(`Order: ${orderId}`);
+console.log(`Customer: ${customerName} ${customerEmail}`);
+console.log(`Item: ${productName} - $${productPrice}`);
+console.log(`Gift: ${isGift}`);
+console.log(`Discount Code: ${discountCode}`);
+
+//* Bonus
+
+function printOrderSummary({
+    order_id: orderId,
+    customer: {
+        full_name: customerName,
+        email: customerEmail,
+    } = {},
+    product: {
+        name: productName,
+        price: productPrice,
+    } = {},
+    metadata: {
+        coupon: discountCode = 'NO_CODE',
+        gift: isGift = false,
+    } = {},
+}) {
+    return  `Order: ${orderId}\n` +
+            `Customer: ${customerName} ${customerEmail}\n` +
+            `Item: ${productName} - $${productPrice}\n` +
+            `Gift: ${isGift}\n` +
+            `Discount Code: ${discountCode}`;
+};
+
+console.log(printOrderSummary(order));
+
+
+
+
+
+
+
+
+
+
